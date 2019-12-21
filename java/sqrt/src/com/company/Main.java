@@ -1,5 +1,7 @@
 package com.company;
 
+import static java.lang.StrictMath.random;
+
 public class Main {
     public static double fuc(double a,double b){  /*a is the unknown*/
         double fx;
@@ -24,6 +26,7 @@ public class Main {
     public static void main(String[] args) {
         double value=5;
         double root=sqrt(value);
+        System.out.println(random());
         System.out.println(root);
     }
 }

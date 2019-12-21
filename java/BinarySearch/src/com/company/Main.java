@@ -1,6 +1,4 @@
 package com.company;
-
-
 public class Main {
     public static int rank(int key ,int[] a){
         int low=0;
@@ -18,11 +16,26 @@ public class Main {
         }
         return mid;
     }
+    public static int[] sortValues(int[] a){
+        for(int j=a.length-1;j>=0;j--){
+            for(int i=0;i<j;i++){
+                if(a[i]>a[i+1]){
+                    int low=a[i+1];
+                    a[i+1]=a[i];
+                    a[i]=low;
+                }
+            }
+        }
+
+        return a;
+    }
 
     public static void main(String[] args) {
-        int[] a={3,5,7,8,10,14,19};
+        int[] a={6,5,7,55,32,34,19};
         int key=5;
+        sortValues(a); /*rearrange it from low to high*/
         int r=rank(key,a);
         System.out.println(r);
     }
 }
+
