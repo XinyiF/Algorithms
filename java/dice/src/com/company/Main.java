@@ -22,7 +22,5 @@ public class Main {
     public static void main(String[] args) {
         double dic=dice(5);
         System.out.println(dic);
-
-
     }
 }
