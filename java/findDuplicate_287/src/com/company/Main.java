@@ -18,11 +18,29 @@ public class Main {
         return nums[i];
     }
 
+    public static int findDuplicate1(int[] nums) {
+        int slow = nums[0];
+        int fast = nums[0];
+        while(true){
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+            if(slow == fast){
+                fast = nums[0];
+                while(slow != fast){
+                    slow = nums[slow];
+                    fast = nums[fast];
+                }
+                return slow;
+            }
+        }
+    }
+
+
 
 
     public static void main(String[] args) {
-	int []nums={1,3,4,2,2};
-	int res=findDuplicate(nums);
+	int []nums={2,1,3,2,4};
+	int res=findDuplicate1(nums);
 	System.out.println(res);
     }
 }
