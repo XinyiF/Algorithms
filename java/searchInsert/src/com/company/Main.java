@@ -32,8 +32,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-	int [] nums={1,3,4,7,9,13,15};
-	int target=19;
+	int [] nums={3,8};
+	int target=7;
 	int res=searchInsert(nums,target);
 	System.out.println(res);
     }

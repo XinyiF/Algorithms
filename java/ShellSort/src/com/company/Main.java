@@ -22,8 +22,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int [] nums={5,2,6,1,3,9,8,10,12,54,13,11};//5131269 5121369 5112369
-        ShellSort(nums,2);
+        int [] nums={-1,-1};//5131269 5121369 5112369
+        ShellSort(nums,0);
         for(int i=0;i<nums.length;i++){
             System.out.println(nums[i]);
         }
