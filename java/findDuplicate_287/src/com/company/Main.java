@@ -39,7 +39,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-	int []nums={2,1,3,2,4};
+	int []nums={5,2,1,3,2,4};
 	int res=findDuplicate1(nums);
 	System.out.println(res);
     }

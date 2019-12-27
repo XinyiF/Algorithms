@@ -8,5 +8,7 @@ public class Main {
         System.out.println(A.length);
         /*the number of cols of the first row*/
         System.out.println(A[0].length);
+
+        System.out.println("null="+i);
     }
 }

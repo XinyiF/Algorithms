@@ -22,6 +22,7 @@ public class Main {
 
     public static int majorityElement(int[] nums){
         Map<Integer,Integer> res=count(nums);
+
         for(int i=0;i<nums.length;i++){
             if(res.get(nums[i])>nums.length/2){
                 return nums[i];
