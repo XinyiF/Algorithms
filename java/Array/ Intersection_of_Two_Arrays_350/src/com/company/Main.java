@@ -1,36 +1,52 @@
 package com.company;
 //Given two arrays, write a function to compute their intersection.
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
     public static int[] intersect(int[] nums1, int[] nums2) {
-        Map<Integer,Integer> count1=new HashMap<>();
-        Map<Integer,Integer> count2=new HashMap<>();
-        ArrayList<Integer> array=new ArrayList<>();
-        int len1=nums1.length,len2=nums2.length,index=0;
-        for(int i=0;i<len1;i++){
-            count1.put(i,nums1[i]);
-        }
-        for(int i=0;i<len2;i++){
-            count2.put(i,nums2[i]);
-        }
-        for(int i=0;i<len1;i++){
-            for (int j=0;j<len2;j++){
-                if(count1.get(i).equals(count2.get(j))){
-                    index++;
-                    array.add(count2.get(j));
-                    count2.put(j,null);
-                    break;
+        Map<Integer,Integer> count=new HashMap<>();
+        int len1=nums1.length,len2=nums2.length;
+        if(len1>=len2){
+            for(int i =0;i<len1;i++){
+                if(!count.containsKey(nums1[i])){
+                    count.put(nums1[i],1);
+                }
+                else {
+                    count.put(nums1[i],count.get(nums1[i])+1);
                 }
             }
+            int k=0;
+            for(int i=0;i<len2;i++){
+                if(count.containsKey(nums2[i])&&count.get(nums2[i])>0){
+                    nums1[k]=nums2[i];
+                    count.put(nums2[i],count.get(nums2[i])-1);
+                    k++;
+                }
+            }
+            return Arrays.copyOfRange(nums1,0,k);
         }
-        int [] res=new int[index];
-        for(int i=0;i<index;i++){
-            res[i]=array.get(i);
+        else {
+            for(int i =0;i<len2;i++){
+                if(!count.containsKey(nums2[i])){
+                    count.put(nums2[i],1);
+                }
+                else {
+                    count.put(nums2[i],count.get(nums2[i])+1);
+                }
+            }
+            int p=0;
+            for(int i=0;i<len1;i++){
+                if(count.containsKey(nums1[i])&&count.get(nums1[i])>0){
+                    nums2[p]=nums1[i];
+                    count.put(nums1[i],count.get(nums1[i])-1);
+                    p++;
+                }
+            }
+            return Arrays.copyOfRange(nums2,0,p);
         }
-        return res;
+
     }
 
     public static void main(String[] args) {
