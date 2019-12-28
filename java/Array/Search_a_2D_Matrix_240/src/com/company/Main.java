@@ -13,22 +13,24 @@ public class Main {
         if(matrix.length==0){
             return false;
         }
-        Map<Integer,Integer> count = new HashMap<>();
-        int up,down,mid1,left,right,mid2,len1=matrix[0].length,len2=matrix.length;
-        for(int i=0;i<len2;i++){
-            for(int j=0;j<len1;j++){
-                count.put(i*len1+j,matrix[i][j]);
+        int i=matrix.length-1,j=0;
+        while(i>=0&&j<=matrix[0].length-1){
+            if(matrix[i][j]>target){
+                i--;
             }
-        }
-        if(count.containsValue(target)){
-            return true;
+            else if(matrix[i][j]<target){
+                j++;
+            }
+            else {
+                return true;
+            }
         }
         return false;
     }
 
     public static void main(String[] args) {
 	int [][] max={{1,3,5,7},{2,5,6,10}};
-	boolean res=searchMatrix(max,11);
+	boolean res=searchMatrix(max,10);
 	System.out.println(res);
     }
 }
