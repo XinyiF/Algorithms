@@ -5,22 +5,29 @@ package com.company;
 
 public class Main {
     public static int[] productExceptSelf(int[] nums) {
-        int p=0,product;
-        int [] res=new int[nums.length];
+        int[] left=new int[nums.length],right=new int[nums.length],res=new int[nums.length];
+        int suml=1,sumr=1;
+        left[0]=1;
+        right[nums.length-1]=1;
+        for(int i=1;i<nums.length;i++){
+            suml*=nums[i-1];
+            left[i]=suml;
+        }
+        for(int i=nums.length-2;i>=0;i--){
+            sumr*=nums[i+1];
+            right[i]=sumr;
+        }
         for(int i=0;i<nums.length;i++){
-            product=1;
-            for(int j=0;j<nums.length;j++){
-                if(j!=i){
-                    product*=nums[j];
-                }
-            }
-            res[p]=product;
-            p++;
+            res[i]=left[i]*right[i];
         }
         return res;
     }
 
     public static void main(String[] args) {
-	// write your code here
+	int []nums={1,2,3,4};
+	int []res=productExceptSelf(nums);
+        for(int i=0;i<nums.length;i++){
+            System.out.println(res[i]);
+        }
     }
 }
