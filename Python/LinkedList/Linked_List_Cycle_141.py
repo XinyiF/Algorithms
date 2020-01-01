@@ -11,7 +11,6 @@ class Solution(object):
         count={}
         if (head == None): return False
         while head:
-            print(head)
             if(head not in count):
                 count[head]=1
             else:
