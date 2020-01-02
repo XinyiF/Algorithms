@@ -50,3 +50,6 @@ head=l0
 res=Solution()
 print(res.isPalindrome(head))
 
+for i in range(0,3):
+    print(i)
+
