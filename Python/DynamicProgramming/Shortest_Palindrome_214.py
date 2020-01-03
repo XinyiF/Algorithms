@@ -24,7 +24,7 @@ class Solution(object):
                 cur = s[i] + cur
             count[cur] = len(cur)
 
-    def shortestPalindrome(self, s):
+    def shortestPalindrome1(self, s):
         count={}
         cur=''
         rev=s[::-1]
@@ -51,8 +51,26 @@ class Solution(object):
             cur=s[i]+cur
         return cur
 
+    def shortestPalindrome2(self, s):
+        length = len(s)
+        count=[]
+        if length <= 1: return s
+        for i in range(1,int(length/2)+1):
+            cur,sub1,sub2=s[0:i],s[i:2*i],s[i+1:2*i+1]
+            if cur== sub1[::-1] or cur==sub2[::-1]:count.append(i)
+        if not count: return s[1:length][::-1]+s
+        if count[len(count)-1]==int(length/2) and s[0:i]==s[i+1:length]:return s
+        else:i=count[len(count)-1]
+        cur=s[0:i]
+        if cur==s[i:2*i][::-1]:return s[2*i:length][::-1]+s
+        elif cur==s[i+1:i*2+1][::-1]:return s[2*i+1:length][::-1]+s
 
-str="aaaa"  #hgfe dcba
+
+
+
+
+
+str="aaaaa" #hgfe dcba
 res=Solution()
-s=res.shortestPalindrome(str)
+s=res.shortestPalindrome2(str)
 print(s)
