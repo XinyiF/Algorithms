@@ -62,10 +62,14 @@ class Solution(object):
 
 
 
-str="aaaabbccbb"
+str="123456"
 res=Solution()
 s=res.longestPalindrome_new(str)
-print(s)
+print(str[1:3])
+count={}
+count[1]=2
+if not count:
+    print('Hi')
 
 
 
