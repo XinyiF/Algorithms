@@ -58,18 +58,11 @@ class Solution(object):
             self.CenterExpand(i,i+1,cur2,count,s)
         return max(count,key=count.get)
 
-
-
-
-
 str="123456"
 res=Solution()
 s=res.longestPalindrome_new(str)
-print(str[1:3])
-count={}
-count[1]=2
-if not count:
-    print('Hi')
+print(s)
+
 
 
 
