@@ -2,7 +2,6 @@
 # You can only see the k numbers in the window. Each time the sliding window moves right by one position.
 # Return the max sliding window.
 
-from collections import deque
 
 class Solution(object):
     def maxSlidingWindow(self, nums, k):
