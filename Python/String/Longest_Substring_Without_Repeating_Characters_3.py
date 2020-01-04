@@ -6,21 +6,16 @@ class Solution(object):
         count={}
         left,right=0,1
         while right<len(s):
-            if right==len(s)-1 and not s[right] in s[left:right]:
-                count[s[left:]] = len(s[left:])
             if not s[right] in s[left:right]:
+                count[s[left:right+1]]=len(s[left:right+1])
                 right+=1
             else:
-                count[s[left:right]]=len(s[left:right])
-                left += s[left:right].index(s[right])+1
-                right+=1
-        if left==0 and right==len(s):
-            return len(s)
+                left+=1
         return max(count.values())
 
 
 
-s="aab"
+s="abcdacdfg"
 res=Solution()
 #print(res.lengthOfLongestSubstring(s))
 count=res.lengthOfLongestSubstring(s)
