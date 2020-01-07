@@ -24,15 +24,8 @@ class Solution(object):
         return count[(len(p),len(s))]
 
 
-
-
-
-
-
-
-
-s="a"
-p=".*..a*"
+s="mis"
+p="mis*"
 
 res=Solution()
 print(res.isMatch(s,p))
