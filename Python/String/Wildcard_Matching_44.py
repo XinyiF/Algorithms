@@ -18,6 +18,7 @@ class Solution(object):
                     i+=1
             count[(i + 1, 0)] = False
             i+=1
+
         if index==len(p): return count[(len(p),len(s))]
         for i in range(len(s)):
             for j in range(index,len(p)):
@@ -27,7 +28,7 @@ class Solution(object):
                     count[(j + 1, i + 1)] = count[(j, i + 1)] or count[(j, i)] or count[(j+1,i)]
                 else:
                     count[(j+1, i+1)] =False
-        return count
+        return count[(len(p),len(s))]
 
 
 s="aaaa"

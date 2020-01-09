@@ -118,3 +118,6 @@ res=[]
 #print(res)
 res=tree.postorderTraversal(tree.root)
 print(res)
+
+res=[2]
+print(min(res))
