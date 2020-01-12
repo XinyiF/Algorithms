@@ -89,18 +89,18 @@ class BinaryTree(object):
 
 
 
-#          1
+#          7
 #        /   \
-#       2     3
+#       5     10
 #      / \   / \
-#     4   5 6   7
-tree=BinaryTree(1)
-tree.root.left=TreeNode(2)
-tree.root.right=TreeNode(3)
-tree.root.left.left=TreeNode(4)
-tree.root.left.right=TreeNode(5)
-tree.root.right.left=TreeNode(6)
-tree.root.right.right=TreeNode(7)
+#     2   6 8   11
+tree=BinaryTree(7)
+tree.root.left=TreeNode(5)
+tree.root.right=TreeNode(10)
+tree.root.left.left=TreeNode(2)
+tree.root.left.right=TreeNode(6)
+tree.root.right.left=TreeNode(8)
+tree.root.right.right=TreeNode(11)
 res=[]
 res=tree.preorder_print(tree.root,res)
 print(res)
@@ -118,6 +118,3 @@ res=[]
 #print(res)
 res=tree.postorderTraversal(tree.root)
 print(res)
-
-res=[2]
-print(min(res))
