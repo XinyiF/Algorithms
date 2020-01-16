@@ -9,4 +9,4 @@ class Solution:
             res.append(tinput[i])
         return res
 
-    def GetLeastNumbers_Solution(self,tinput,k):
+
