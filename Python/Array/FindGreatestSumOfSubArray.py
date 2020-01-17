@@ -16,3 +16,4 @@ class Solution:
 s=[8,-8,5]
 res=Solution()
 print(res.FindGreatestSumOfSubArray(s))
+print(s.index(8))
