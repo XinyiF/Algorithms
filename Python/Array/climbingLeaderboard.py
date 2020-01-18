@@ -34,3 +34,4 @@ s=[100 ,90 ,90 ,80, 75, 60]
 a=[50 ,65, 77, 90, 102]
 
 print(climbingLeaderboard(s,a))
+
