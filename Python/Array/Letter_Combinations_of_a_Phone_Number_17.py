@@ -25,8 +25,8 @@ dig='23'
 res=Solution()
 print(res.letterCombinations(dig))
 
-
-
-
+a=[1,2,3]
+c,d,e=map(int,a)
+print(c,d,e)
 
 
