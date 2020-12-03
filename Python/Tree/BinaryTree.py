@@ -73,6 +73,58 @@ class BTree(object):
             self=temp.left
         return output[::-1]
 
+    # 分治算法
+    def preorder3(self,node):
+        if not node:
+            return []
+        return [node.data]+self.preorder3(node.left)+self.preorder3(node.right)
+
+    def inorder3(self,node):
+        if not node:
+            return []
+        return self.inorder3(node.left)+[node.data]+self.inorder3(node.right)
+
+    def postorder3(self,node):
+        if not node:
+            return []
+        return self.postorder3(node.left)+self.postorder3(node.right)+[node.data]
+
+
+
+
+    def lowestCommonAncestor(self, root, p, q):
+        if root==p or root==q or not root:
+            return root
+        left=self.lowestCommonAncestor(root.left,p,q)
+        right=self.lowestCommonAncestor(root.right,q,p)
+        if not left:
+            return right
+        if not right:
+            return left
+        return root
+
+    # 队列
+    def BFS(self,root):
+        queue=[root]
+        output=[]
+        while queue:
+            root=queue[0]
+            queue=queue[1:]
+            output.append(root.data)
+            if root.left:
+                queue.append(root.left)
+            if root.right:
+                queue.append(root.right)
+            if not root:
+                break
+        return output
+
+
+
+
+
+
+
 
 
 
@@ -105,20 +157,10 @@ def main():
     tree.left = left_tree
     tree.right = right_tree
 
-    out=tree.preorder2()
-    print(out)
-    tree.preorder()
-    print('')
+    print(tree.BFS(tree))
 
-    out=tree.inorder2()
-    print(out)
-    tree.inorder()
-    print('')
 
-    out=tree.postorder2()
-    print(out)
-    tree.postorder()
-    print('')
+
 
 if __name__ == "__main__":
     main()
