@@ -1,15 +1,15 @@
-class BTree(object):
+class TreeNode(object):
 
     # 初始化
-    def __init__(self, data=None, left=None, right=None):
-        self.data = data    # 数据域
+    def __init__(self, val=None, left=None, right=None):
+        self.val = val    # 数据域
         self.left = left    # 左子树
         self.right = right  # 右子树
 
     #前序遍历 根左右
     def preorder(self):
-        if self.data:
-            print(self.data,end=' ')
+        if self.val:
+            print(self.val,end=' ')
         if self.left:
             self.left.preorder()
         if self.right:
@@ -20,8 +20,8 @@ class BTree(object):
     def inorder(self):
         if self.left:
             self.left.inorder()
-        if self.data:
-            print(self.data, end=' ')
+        if self.val:
+            print(self.val, end=' ')
         if self.right:
             self.right.inorder()
 
@@ -31,8 +31,8 @@ class BTree(object):
             self.left.postorder()
         if self.right:
             self.right.postorder()
-        if self.data:
-            print(self.data, end=' ')
+        if self.val:
+            print(self.val, end=' ')
 
     # 非递归遍历
     def preorder2(self):
@@ -41,7 +41,7 @@ class BTree(object):
         while stack or self:
             while self:
                 stack.append(self)
-                output.append(self.data)
+                output.append(self.val)
                 self=self.left
             temp=stack.pop()
             self=temp.right
@@ -55,7 +55,7 @@ class BTree(object):
                 stack.append(self)
                 self=self.left
             temp = stack.pop()
-            output.append(temp.data)
+            output.append(temp.val)
             self=temp.right
         return output
 
@@ -67,7 +67,7 @@ class BTree(object):
         while self or stack:
             while self:
                 stack.append(self)
-                output.append(self.data)
+                output.append(self.val)
                 self=self.right
             temp=stack.pop()
             self=temp.left
@@ -77,22 +77,29 @@ class BTree(object):
     def preorder3(self,node):
         if not node:
             return []
-        return [node.data]+self.preorder3(node.left)+self.preorder3(node.right)
+        return [node.val]+self.preorder3(node.left)+self.preorder3(node.right)
 
     def inorder3(self,node):
         if not node:
             return []
-        return self.inorder3(node.left)+[node.data]+self.inorder3(node.right)
+        return self.inorder3(node.left)+[node.val]+self.inorder3(node.right)
 
     def postorder3(self,node):
         if not node:
             return []
-        return self.postorder3(node.left)+self.postorder3(node.right)+[node.data]
+        return self.postorder3(node.left)+self.postorder3(node.right)+[node.val]
 
 
 
 
     def lowestCommonAncestor(self, root, p, q):
+        """
+
+        :param root: 根节点
+        :param p: 节点p
+        :param q: 节点q
+        :return: p和q最近的公共祖先
+        """
         if root==p or root==q or not root:
             return root
         left=self.lowestCommonAncestor(root.left,p,q)
@@ -110,7 +117,7 @@ class BTree(object):
         while queue:
             root=queue[0]
             queue=queue[1:]
-            output.append(root.data)
+            output.append(root.val)
             if root.left:
                 queue.append(root.left)
             if root.right:
@@ -118,6 +125,27 @@ class BTree(object):
             if not root:
                 break
         return output
+
+    def insertIntoBST(self, root, val):
+        if not root:
+            return TreeNode(val)
+        start=root
+        while root:
+            if val<root.val:
+                if not root.left:
+                    root.left=TreeNode(val)
+                    return start
+                root= root.left
+            else:
+                if not root.right:
+                    root.right=TreeNode(val)
+                    return start
+                root=root.right
+
+
+
+
+
 
 
 
@@ -136,24 +164,24 @@ class BTree(object):
 
 def main():
     # 构造二叉树, BOTTOM-UP METHOD
-    right_tree = BTree(6)
-    right_tree.left = BTree(2)
-    right_tree.right = BTree(4)
+    right_tree = TreeNode(6)
+    right_tree.left = TreeNode(2)
+    right_tree.right = TreeNode(4)
 
-    left_tree = BTree(5)
-    left_tree.left = BTree(1)
-    left_tree.right = BTree(3)
+    left_tree = TreeNode(5)
+    left_tree.left = TreeNode(1)
+    left_tree.right = TreeNode(3)
 
-    tree = BTree(11)
+    tree = TreeNode(11)
     tree.left = left_tree
     tree.right = right_tree
 
-    left_tree = BTree(7)
-    left_tree.left = BTree(3)
-    left_tree.right = BTree(4)
+    left_tree = TreeNode(7)
+    left_tree.left = TreeNode(3)
+    left_tree.right = TreeNode(4)
 
     right_tree = tree # 增加新的变量
-    tree = BTree(18)
+    tree = TreeNode(18)
     tree.left = left_tree
     tree.right = right_tree
 
