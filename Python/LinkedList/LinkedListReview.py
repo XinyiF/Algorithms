@@ -1,7 +1,8 @@
 class ListNode:
-    def __init__(self, x):
+    def __init__(self, x,random=None):
         self.val = x
         self.next = None
+        self.random=random
 
     def deleteDuplicates(self, head):
         """
@@ -244,6 +245,32 @@ class ListNode:
             head1=head1.next
             head3=head3.next
         return True
+
+    def copyRandomList(self, head):
+        """
+        深拷贝一个随机指针链表
+        hash储存旧链表node和新链表node对应关系
+        注意最后的None
+        :param head:
+        :return:
+        """
+        oldNew={}
+        dummy=ListNode(-1)
+        start1,start2=head,dummy
+        while head:
+            dummy.next=ListNode(head.val)
+            dummy=dummy.next
+            oldNew[head]=dummy
+            head=head.next
+        dummy.next=None
+        oldNew[head]=dummy.next
+        start2=start2.next
+        root=start2
+        while start1:
+            start2.random=oldNew[start1.random]
+            start2=start2.next
+            start1=start1.next
+        return root
 
 
 
